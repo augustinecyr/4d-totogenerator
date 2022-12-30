@@ -29,8 +29,9 @@ public class TotoController {
         int[] newArray = set.stream().mapToInt(i -> i).toArray();
         for (int i = 0; i < newArray.length; i++) {
             System.out.print(newArray[i] + " ");
-        }
 
+        }
+        System.out.println("------------- Ordinary");
         return totoNumbers;
     }
 
@@ -45,10 +46,25 @@ public class TotoController {
     // System 7 function
     private int[] generateSystemSeven() {
         int[] systemSeven = new int[7];
+        HashSet<Integer> set = new HashSet<>();
         Random rand = new Random();
-        for (int i = 0; i < 7; i++) {
+        for (int i = 0; i < 6; i++) {
             systemSeven[i] = rand.nextInt(49) + 1;
+            // prevent same number from appearing
+            if (set.contains(systemSeven[i])) {
+            } else {
+                set.add(systemSeven[i]);
+            }
         }
+
+        int[] newArray = set.stream().mapToInt(i -> i).toArray();
+        for (int i = 0; i < newArray.length; i++) {
+            // display generated set
+            System.out.print(newArray[i] + " ");
+
+        }
+        System.out.println("------------- System 7");
+
         return systemSeven;
     }
 
